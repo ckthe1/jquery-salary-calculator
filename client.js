@@ -3,13 +3,13 @@ $(document).ready(onReady);
 
 function onReady(){
     console.log('jQuery');
-
+    $('#deleteButton').on('click', deleteEmployee);
     $('#submitButton').on('click', addInput);
-    //$('#submitButton').on('click', addSalary);
+    
 
 
 }//end onReady
-let salaryCounter = 0;
+let totalCost = 0; 
 let totalSalary = 0;
 function addInput(){
     console.log('input values');
@@ -23,27 +23,36 @@ function addInput(){
     console.log(inputTitle);
     let inputAnnualSalary = $('#inputSalary').val();
 
-    salaryCounter += Number($('#inputSalary').val());//add inputSalary value to itself as a number
+    totalCost += Number($('#inputSalary').val());//add inputSalary value to itself as a number, store it in totalCost
     console.log(inputAnnualSalary);
 
-    let monthlyCost= salaryCounter/12;
+    let monthlyCost= totalCost/12;//monthly cost
     $('#totalMonthlyCostOut').text(`Total Monthly: ${monthlyCost}`);
     if (monthlyCost > 20000){
         $('#totalMonthlyCostOut').css("background-color", "red");
 
-    }//end if else
+    }//end if 
 
     $('#employeesBody').append(`
     <tr class=employeeInfos>
-                <td>${inputFirstName}</td>
-                <td>${inputLastName}</td>
-                <td>${inputId}</td>
-                <td>${inputTitle}</td>
-                <td>${inputAnnualSalary}</td>
+                <td id= first>${inputFirstName}</td>
+                <td id= last>${inputLastName}</td>
+                <td id=inputId >${inputId}</td>
+                <td id= title>${inputTitle}</td>
+                <td id= salary>${inputAnnualSalary}</td>
             </tr>
     `)
     $('.inputs').val('');
-}
+}//end addInput
+
+function deleteEmployee() {
+    console.log('delete Employee');
+    $('td').remove();//remove row of employee
+
+}//end deleteEmployee
+
+
+
 // function addSalary(){
 //     totalSalary = Number($('#inputSalary').val())+ Number ($(this).val());
 //     console.log(totalSalary);
