@@ -4,10 +4,13 @@ $(document).ready(onReady);
 function onReady(){
     console.log('jQuery');
 
-    $("#submitButton").on("click",addInput);
+    $('#submitButton').on('click', addInput);
+    //$('#submitButton').on('click', addSalary);
 
 
 }//end onReady
+let salaryCounter = 0;
+let totalSalary = 0;
 function addInput(){
     console.log('input values');
     let inputFirstName = $('#inputFirstName').val();
@@ -19,9 +22,10 @@ function addInput(){
     let inputTitle = $('#inputTitle').val();
     console.log(inputTitle);
     let inputAnnualSalary = $('#inputSalary').val();
+    salaryCounter += Number($('#inputSalary').val());
     console.log(inputAnnualSalary);
-    
-    $("#employeesBody").append(`
+    $('#TotalMonthlyCostOut').text(`Total Monthly: ${salaryCounter/12}`);
+    $('#employeesBody').append(`
     <tr class=employeeInfos>
                 <td>${inputFirstName}</td>
                 <td>${inputLastName}</td>
@@ -32,3 +36,11 @@ function addInput(){
     `)
     $('.inputs').val('');
 }
+// function addSalary(){
+//     totalSalary = Number($('#inputSalary').val())+ Number ($(this).val());
+//     console.log(totalSalary);
+    
+//     //inputAnnualSalary + 
+//     //let input80 = $('#input80').val();
+//     //console.log(input80);
+// }
