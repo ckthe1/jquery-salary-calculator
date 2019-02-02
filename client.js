@@ -22,9 +22,17 @@ function addInput(){
     let inputTitle = $('#inputTitle').val();
     console.log(inputTitle);
     let inputAnnualSalary = $('#inputSalary').val();
-    salaryCounter += Number($('#inputSalary').val());
+
+    salaryCounter += Number($('#inputSalary').val());//add inputSalary value to itself as a number
     console.log(inputAnnualSalary);
-    $('#TotalMonthlyCostOut').text(`Total Monthly: ${salaryCounter/12}`);
+
+    let monthlyCost= salaryCounter/12;
+    $('#totalMonthlyCostOut').text(`Total Monthly: ${monthlyCost}`);
+    if (monthlyCost > 20000){
+        $('#totalMonthlyCostOut').css("background-color", "red");
+
+    }//end if else
+
     $('#employeesBody').append(`
     <tr class=employeeInfos>
                 <td>${inputFirstName}</td>
