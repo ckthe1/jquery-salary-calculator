@@ -3,9 +3,9 @@ $(document).ready(onReady);
 
 function onReady(){
     console.log('jQuery');
-    $('#deleteButton').on('click', deleteEmployee);
-    $('#submitButton').on('click', addInput);
     
+    $('#submitButton').on('click', addInput);
+    $('.tableBody').on('click', '.deleteButton', deleteEmployee);
 
 
 }//end onReady
@@ -23,7 +23,7 @@ function addInput(){
     console.log(inputTitle);
     let inputAnnualSalary = $('#inputSalary').val();
 
-    totalCost += Number($('#inputSalary').val());//add inputSalary value to itself as a number, store it in totalCost
+    totalCost += Number(inputAnnualSalary);//add inputSalary value to itself as a number, store it in totalCost
     console.log(inputAnnualSalary);
 
     let monthlyCost= totalCost/12;//monthly cost
@@ -33,31 +33,26 @@ function addInput(){
 
     }//end if 
 
-    $('#employeesBody').append(`
+    $('.tableBody').append(`
     <tr class=employeeInfos>
-                <td id= first>${inputFirstName}</td>
-                <td id= last>${inputLastName}</td>
-                <td id=inputId >${inputId}</td>
-                <td id= title>${inputTitle}</td>
-                <td id= salary>${inputAnnualSalary}</td>
+                <td id= first>${inputFirstName} </td>
+                <td id= last>${inputLastName} </td>
+                <td id= inputId>${inputId} </td>
+                <td id= title>${inputTitle} </td>
+                <td id= salary>${inputAnnualSalary} </td>
+                <td> <button class="deleteButton">Delete</button></td>
             </tr>
     `)
     $('.inputs').val('');
 }//end addInput
 
+
+
 function deleteEmployee() {
     console.log('delete Employee');
-    $('td').remove();//remove row of employee
+    $(this).closest('tr').remove();//remove row of employee, closest tr
 
 }//end deleteEmployee
 
 
 
-// function addSalary(){
-//     totalSalary = Number($('#inputSalary').val())+ Number ($(this).val());
-//     console.log(totalSalary);
-    
-//     //inputAnnualSalary + 
-//     //let input80 = $('#input80').val();
-//     //console.log(input80);
-// }
