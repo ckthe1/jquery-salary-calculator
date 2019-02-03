@@ -3,10 +3,8 @@ $(document).ready(onReady);
 
 function onReady(){
     console.log('jQuery');
-    
     $('#submitButton').on('click', addInput);
     $('.tableBody').on('click', '.deleteButton', deleteEmployee);
-
 
 }//end onReady
 let totalCost = 0; 
@@ -29,22 +27,21 @@ function addInput(){
     let monthlyCost= totalCost/12;//monthly cost
     $('#totalMonthlyCostOut').text(`Total Monthly: ${monthlyCost}`);
     if (monthlyCost > 20000){
-        $('#totalMonthlyCostOut').css("background-color", "red");
-
-    }//end if 
+        $('#totalMonthlyCostOut').css('background-color', 'red');
+    }//end if statement
 
     $('.tableBody').append(`
     <tr class=employeeInfos>
-                <td id= first>${inputFirstName} </td>
-                <td id= last>${inputLastName} </td>
-                <td id= inputId>${inputId} </td>
-                <td id= title>${inputTitle} </td>
-                <td id= salary>${inputAnnualSalary} </td>
-                <td> <button class="deleteButton">Delete</button></td>
-            </tr>
+        <td id= first>${inputFirstName} </td>
+        <td id= last>${inputLastName} </td>
+        <td id= inputId>${inputId} </td>
+        <td id= title>${inputTitle} </td>
+        <td id= salary>${inputAnnualSalary} </td>
+        <td> <button class="deleteButton">Delete</button></td>
+    </tr>
     `)
     $('.inputs').val('');
-}//end addInput
+}//end addInput funtion
 
 
 
